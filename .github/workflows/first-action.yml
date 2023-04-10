@@ -1,0 +1,14 @@
+# this is a basic workflow to help me understand how it works
+
+name: Fist Workflow
+
+on: workflow_dispatch
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: echo "Hello world"
+      - name: Print Goodby
+        run: echo "Done - Bye"
