@@ -1,0 +1,40 @@
+name: Test and deploy react test project
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: react-test-project
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependecies
+        run: npm ci
+      - name: Run test tests
+        run: npm run test
+  deploy:
+    name: Build and deploy
+    runs-on: macos-latest
+    needs: test
+    defaults:
+      run:
+        working_directory: react-test-project
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependecies
+        run: npm ci
+      - name: Build the project
+        run: npm run build
+      - name: Deployment
+        run: echo "Deployment..."
