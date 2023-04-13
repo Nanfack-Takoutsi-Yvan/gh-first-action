@@ -24,7 +24,7 @@ jobs:
     needs: test
     defaults:
       run:
-        working_directory: react-test-project
+        working-directory: react-test-project
     steps:
       - name: Clone Repository
         uses: actions/checkout@v3
